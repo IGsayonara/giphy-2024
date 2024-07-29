@@ -1,6 +1,6 @@
+import { fetchRandomResults, fetchSearchResults } from '@/api/giphy/utils'
 import { defineStore } from 'pinia'
 import { MultiResponse } from 'giphy-api'
-import { fetchRandomResults, fetchSearchResults } from '../api/giphy/utils.ts'
 
 export const useSearchStore = defineStore('search', {
   state: () => ({
