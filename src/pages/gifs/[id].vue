@@ -63,6 +63,7 @@
   })
 
   const initializeStore = () => {
+    // TODO: find a proper type definition for a route params
     const id = (route.params as any).id
     if (id) {
       gifStore.fetchGif(id)
