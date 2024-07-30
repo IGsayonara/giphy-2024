@@ -14,7 +14,6 @@ declare module 'vue' {
     GiphyOriginal: typeof import('./components/GiphyOriginal.vue')['default']
     GiphyPreview: typeof import('./components/GiphyPreview.vue')['default']
     GiphySearch: typeof import('./components/GiphySearch.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     NotFound: typeof import('./components/NotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

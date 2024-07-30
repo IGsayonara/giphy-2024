@@ -1,5 +1,5 @@
 import { giphyAxios } from './instance'
-import { GIFObject, MultiResponse, SingleResponse } from 'giphy-api'
+import { MultiResponse, SingleResponse } from 'giphy-api'
 
 export const fetchSearchResults = async (searchQuery = '', limit = 0, offset = 0): Promise<MultiResponse> => {
   return giphyAxios.get<MultiResponse>('/gifs/search/', {
@@ -12,7 +12,7 @@ export const fetchSearchResults = async (searchQuery = '', limit = 0, offset = 0
 }
 
 export const fetchRandom = async (tag = ''): Promise<SingleResponse> => {
-  return giphyAxios.get<MultiResponse>('/gifs/random/', {
+  return giphyAxios.get<SingleResponse>('/gifs/random/', {
     params: {
       ...(tag && { tag }),
     },

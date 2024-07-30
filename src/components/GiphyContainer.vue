@@ -47,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+  import { InfiniteScrollOnLoad } from '@/helpers/infinitive-scroll.type'
   import { useSearchStore } from '@/stores/search.store'
   const searchStore = useSearchStore()
   searchStore.fetchSearchResults()
@@ -63,7 +64,7 @@
     }
   })
 
-  const loadMore = ({ done }) => {
+  const loadMore: InfiniteScrollOnLoad = ({ done }) => {
     done('loading')
     if (!searchStore.canFetchMore) {
       done('empty')
