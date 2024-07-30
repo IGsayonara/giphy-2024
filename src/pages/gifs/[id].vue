@@ -63,12 +63,15 @@
   })
 
   const initializeStore = () => {
-    gifStore.fetchGif(route.params.id)
+    const id = (route.params as any).id
+    if (id) {
+      gifStore.fetchGif(id)
+    }
     gifStore.fetchRandomGifs()
   }
   initializeStore()
 
-  watch(() => route.params.id, () => {
+  watch(() => route.params, () => {
     initializeStore()
   })
 
