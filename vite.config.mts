@@ -6,6 +6,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Vue from '@vitejs/plugin-vue'
 import VueRouter from 'unplugin-vue-router/vite'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -53,6 +54,27 @@ export default defineConfig({
         }],
       },
     }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'Giphy test',
+        short_name: 'Giphy',
+        description: 'Giphy test PWA',
+        theme_color: '#ffffff',
+        icons: [
+          {
+            src: 'pwa-giphy.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-giphy.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
+    })
   ],
   define: { 'process.env': {} },
   resolve: {
