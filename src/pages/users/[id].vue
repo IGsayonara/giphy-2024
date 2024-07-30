@@ -25,7 +25,7 @@
 <script lang="ts" setup>
   import { useGifStore } from '@/stores/gif.store'
   const router = useRouter()
-  const route = useRoute()
+  // const route = useRoute()
 
   const gifStore = useGifStore()
 
@@ -37,5 +37,5 @@
     router.push(`/users/${username}`)
   }
 
-  gifStore.fetchGif(route.params.id)
+  // gifStore.fetchGif(route.params.id)
 </script>

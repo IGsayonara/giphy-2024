@@ -94,7 +94,7 @@
   }
 
   const onGifClick = (id: string) => {
-    router.push(`/gifs/${id}`)
+    router.push({ name: `/gifs/[id]`, params: { id } })
   }
 
 </script>
