@@ -37,9 +37,7 @@ export const useSearchStore = defineStore('search', {
       this.pagination = response.pagination
       this.searchResults = response.data
       this.notFound = !response.data.length
-      setTimeout(() => {
-        this.loading = false
-      }, 1000)
+      this.loading = false
     },
 
     async fetchMore () {

@@ -1,7 +1,7 @@
 <template>
   <VRow>
     <VCol cols="12">
-      <VRow v-if="searchStore.loading">
+      <VRow v-if="isLoading">
         <VCol
           v-for="index in 16"
           :key="index"
@@ -38,7 +38,7 @@
           </VRow>
         </template>
         <template #loading>
-          This is taking a very long time...
+          Loading...
         </template>
       </VInfiniteScroll>
 
@@ -48,11 +48,20 @@
 
 <script setup lang="ts">
   import { useSearchStore } from '@/stores/search.store'
-
-  const giphy = ref<HTMLElement | null>(null)
-
   const searchStore = useSearchStore()
   searchStore.fetchSearchResults()
+
+  const giphy = ref<HTMLElement | null>(null)
+  const isLoading = ref(searchStore.loading)
+
+  watch(() => searchStore.loading, () => {
+    if (searchStore.loading) isLoading.value = true
+    else {
+      setTimeout(() => {
+        isLoading.value = false
+      }, 500)
+    }
+  })
 
   const loadMore = ({ done }) => {
     done('loading')
