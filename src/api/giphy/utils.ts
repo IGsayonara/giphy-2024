@@ -27,3 +27,7 @@ export const fetchTrendingResults = async (limit = 0, offset = 0): Promise<Multi
     },
   }).then(r => r.data)
 }
+
+export const fetchById = async (id: string): Promise<SingleResponse> => {
+  return giphyAxios.get<SingleResponse>(`/gifs/${id}/`).then(r => r.data)
+}

@@ -18,7 +18,14 @@
           cols="6"
           md="3"
         >
-          <GiphyGif :full="false" :gif="gif" height="200px" width="100%" />
+          <GiphyGif
+            class="cursor-pointer"
+            :full="false"
+            :gif="gif"
+            height="200px"
+            width="100%"
+            @click="onGifClick(gif.id)"
+          />
         </VCol>
       </VRow>
       <VContainer v-else-if="searchStore.notFound">
@@ -33,7 +40,14 @@
               cols="6"
               md="3"
             >
-              <GiphyGif :full="false" :gif="gif" height="200px" width="100%" />
+              <GiphyGif
+                class="cursor-pointer"
+                :full="false"
+                :gif="gif"
+                height="200px"
+                width="100%"
+                @click="onGifClick(gif.id)"
+              />
             </VCol>
           </VRow>
         </template>
@@ -49,6 +63,7 @@
 <script setup lang="ts">
   import { InfiniteScrollOnLoad } from '@/helpers/infinitive-scroll.type'
   import { useSearchStore } from '@/stores/search.store'
+  const router = useRouter()
   const searchStore = useSearchStore()
   searchStore.fetchSearchResults()
 
@@ -74,6 +89,10 @@
     searchStore.fetchMore().then(() => {
       done('ok')
     })
+  }
+
+  const onGifClick = (id: string) => {
+    router.push(`/gifs/${id}`)
   }
 
 </script>
