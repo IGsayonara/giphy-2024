@@ -18,7 +18,7 @@
           cols="6"
           md="3"
         >
-          <GiphyCard :gif="gif" height="200px" width="100%" />
+          <GiphyGif :full="false" :gif="gif" height="200px" width="100%" />
         </VCol>
       </VRow>
       <VContainer v-else-if="searchStore.notFound">
@@ -33,7 +33,7 @@
               cols="6"
               md="3"
             >
-              <GiphyCard :gif="gif" height="200px" width="100%" />
+              <GiphyGif :full="false" :gif="gif" height="200px" width="100%" />
             </VCol>
           </VRow>
         </template>
@@ -47,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+  import GiphyGif from '@/components/GiphyGif.vue'
   import { useSearchStore } from '@/stores/search.store'
   const searchStore = useSearchStore()
   searchStore.fetchSearchResults()

@@ -8,9 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
-    GiphyCard: typeof import('./components/GiphyCard.vue')['default']
     GiphyContainer: typeof import('./components/GiphyContainer.vue')['default']
+    GiphyGif: typeof import('./components/GiphyGif.vue')['default']
     GiphyLogo: typeof import('./components/GiphyLogo.vue')['default']
+    GiphyOriginal: typeof import('./components/GiphyOriginal.vue')['default']
+    GiphyPreview: typeof import('./components/GiphyPreview.vue')['default']
     GiphySearch: typeof import('./components/GiphySearch.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     NotFound: typeof import('./components/NotFound.vue')['default']

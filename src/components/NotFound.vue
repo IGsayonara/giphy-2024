@@ -1,9 +1,16 @@
 <template>
-  <GiphyCard v-if="gif" :gif="gif" height="auto" width="100%" />
+  <GiphyGif
+    v-if="gif"
+    :full="true"
+    :gif="gif"
+    height="auto"
+    width="100%"
+  />
 </template>
 
 <script setup lang="ts">
   import { fetchRandom } from '@/api/giphy/utils'
+  import GiphyGif from '@/components/GiphyGif.vue'
   import { GIFObject } from 'giphy-api'
   const gif = ref<null | GIFObject>(null)
 
