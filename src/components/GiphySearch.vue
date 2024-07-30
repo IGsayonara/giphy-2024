@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     v-model="searchStore.searchValue"
-    label="Search"
+    label="Search for a gif :)"
     @input="onInput"
   />
 </template>

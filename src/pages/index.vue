@@ -1,11 +1,13 @@
 <template>
   <div>
-    <VRow>
-      <VCol cols="3">Logo</VCol>
-      <VCol cols="9"><GiphySearch /></VCol>
-    </VRow>
+    <VContainer>
+      <VRow align="baseline">
+        <VCol cols="12" md="3"><GiphyLogo /></VCol>
+        <VCol cols="12" md="9"><GiphySearch /></VCol>
+      </VRow>
+      <GiphyContainer />
+    </VContainer>
 
-    <GiphyContainer />
   </div>
 </template>
 

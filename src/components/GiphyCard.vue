@@ -1,13 +1,12 @@
 <template>
   <div>
-    <img :alt="gif.title" height="150px" :src="gif.images.original.url" width="100%">
-  </div>
+    <img :alt="gif.title" :height="height" :src="gif.images.original.url" :width="width"></div>
 </template>
 
 <script setup lang="ts">
   import { GIFObject } from 'giphy-api'
 
-  const props = defineProps<{gif: GIFObject}>()
+  const props = defineProps<{gif: GIFObject, height: string, width: string}>()
   const gif = toRef(props, 'gif')
 </script>
 

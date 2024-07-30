@@ -10,8 +10,10 @@ declare module 'vue' {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     GiphyCard: typeof import('./components/GiphyCard.vue')['default']
     GiphyContainer: typeof import('./components/GiphyContainer.vue')['default']
+    GiphyLogo: typeof import('./components/GiphyLogo.vue')['default']
     GiphySearch: typeof import('./components/GiphySearch.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    NotFound: typeof import('./components/NotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
