@@ -8,12 +8,14 @@
 
 <script setup lang="ts">
   import { useSearchStore } from '@/stores/search.store'
+  import debounce from 'lodash.debounce'
 
   const searchStore = useSearchStore()
 
-  const onInput = () => {
+  const onInput = debounce(() => {
     searchStore.fetchSearchResults()
-  }
+  }, 300)
+
 </script>
 
 <style scoped lang="sass">
