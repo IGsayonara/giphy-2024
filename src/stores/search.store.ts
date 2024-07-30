@@ -7,7 +7,6 @@ const PaginationLimit = 36
 export const useSearchStore = defineStore('search', {
   state: () => ({
     searchValue: '' as string,
-
     searchResults: [] as MultiResponse['data'],
     pagination: null as null | MultiResponse['pagination'],
   }),

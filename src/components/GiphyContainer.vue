@@ -1,7 +1,7 @@
 <template>
   <VInfiniteScroll @load="loadMore">
     <VRow ref="giphy">
-      <VCol v-for="gif in searchStore.searchResults" :key="gif.id" cols="3">
+      <VCol v-for="gif in searchStore.searchResults" :key="gif.id" cols="6" md="3">
         <GiphyCard :gif="gif" />
       </VCol>
     </VRow>
