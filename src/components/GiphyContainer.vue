@@ -65,6 +65,8 @@
   import { useSearchStore } from '@/stores/search.store'
   const router = useRouter()
   const searchStore = useSearchStore()
+
+  // initialize store
   searchStore.fetchSearchResults()
 
   const giphy = ref<HTMLElement | null>(null)

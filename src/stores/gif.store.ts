@@ -1,6 +1,8 @@
-import { fetchById } from '@/api/giphy/utils'
+import { fetchById, fetchRandom } from '@/api/giphy/utils'
 import { GIFObject } from 'giphy-api'
 import { defineStore } from 'pinia'
+
+const RandomLimit = 4
 
 export const useGifStore = defineStore('gif', {
   state: () => ({
@@ -16,6 +18,11 @@ export const useGifStore = defineStore('gif', {
           this.notFound = true
           return null
         })
+    },
+    async fetchRandomGifs () {
+      this.randomGifs = await Promise.all(new Array(RandomLimit).fill(0).map(async () => {
+        return fetchRandom().then(r => r.data)
+      }))
     },
   },
 })
