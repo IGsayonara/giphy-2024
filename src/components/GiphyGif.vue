@@ -14,8 +14,6 @@
 </template>
 
 <script setup lang="ts">
-  import GiphyOriginal from '@/components/GiphyOriginal.vue'
-  import GiphyPreview from '@/components/GiphyPreview.vue'
   import { GIFObject } from 'giphy-api'
 
   const props = defineProps<{gif: GIFObject, height: string, width: string, full: boolean}>()

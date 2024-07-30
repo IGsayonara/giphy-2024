@@ -10,7 +10,6 @@
 
 <script setup lang="ts">
   import { fetchRandom } from '@/api/giphy/utils'
-  import GiphyGif from '@/components/GiphyGif.vue'
   import { GIFObject } from 'giphy-api'
   const gif = ref<null | GIFObject>(null)
 

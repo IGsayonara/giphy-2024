@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-  import GiphyGif from '@/components/GiphyGif.vue'
   import { useSearchStore } from '@/stores/search.store'
   const searchStore = useSearchStore()
   searchStore.fetchSearchResults()
