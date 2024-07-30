@@ -18,3 +18,12 @@ export const fetchRandomResults = async (limit = 0): Promise<GIFObject[]> => {
       .then(r => r.data)
   }))
 }
+
+export const fetchTrendingResults = async (limit = 0, offset = 0): Promise<MultiResponse> => {
+  return giphyAxios.get<MultiResponse>('/gifs/trending/', {
+    params: {
+      ...(limit > 0 && { limit }),
+      ...(offset > 0 && { offset }),
+    },
+  }).then(r => r.data)
+}

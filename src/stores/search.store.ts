@@ -1,12 +1,14 @@
-import { fetchRandomResults, fetchSearchResults } from '@/api/giphy/utils'
+import { fetchSearchResults, fetchTrendingResults } from '@/api/giphy/utils'
 import { defineStore } from 'pinia'
 import { MultiResponse } from 'giphy-api'
+
+const PaginationLimit = 36
 
 export const useSearchStore = defineStore('search', {
   state: () => ({
     searchValue: '' as string,
 
-    searchResults: null as null | MultiResponse['data'],
+    searchResults: [] as MultiResponse['data'],
     pagination: null as null | MultiResponse['pagination'],
   }),
   getters: {},
@@ -16,11 +18,20 @@ export const useSearchStore = defineStore('search', {
       await this.fetchSearchResults()
     },
     async fetchSearchResults () {
-      if (this.searchValue) {
-        this.searchResults = await fetchSearchResults(this.searchValue).then(r => r.data)
-      } else {
-        this.searchResults = await fetchRandomResults()
-      }
+      const response =
+        this.searchValue
+          ? await fetchSearchResults(this.searchValue, PaginationLimit)
+          : await fetchTrendingResults(PaginationLimit)
+      this.pagination = response.pagination
+      this.searchResults = response.data
+    },
+    async fetchMore () {
+      const response =
+        this.searchValue
+          ? await fetchSearchResults(this.searchValue, PaginationLimit, (this.pagination?.offset || 0) + PaginationLimit)
+          : await fetchTrendingResults(PaginationLimit, (this.pagination?.offset || 0) + PaginationLimit)
+      this.pagination = response.pagination
+      this.searchResults.push(...response.data)
     },
   },
 })
