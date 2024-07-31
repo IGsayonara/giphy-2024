@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/giphy-2024/sw.js', { scope: '/giphy-2024/' })})}
