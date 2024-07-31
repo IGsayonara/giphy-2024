@@ -1,9 +1,10 @@
 <template>
   <VContainer>
-    <VRow v-if="gifStore.gif" justify="center">
+    <VRow v-if="!gifStore.notFound" justify="center">
       <VCol col="12" md="6">
         <VRow class="text-center" justify="center">
-          <div>
+          <v-skeleton-loader v-if="gifStore.gifLoading" height="300px" type="image" width="100%" />
+          <div v-else-if="gifStore.gif">
             <GiphyGif
               :full="true"
               :gif="gifStore.gif"
@@ -20,15 +21,20 @@
       </VCol>
     </VRow>
 
-    <VRow v-if="gifStore.notFound" justify="center">
+    <VRow v-else justify="center">
       <VCol cols="12" md="6">
         <NotFound />
       </VCol>
     </VRow>
 
-    <VRow v-if="gifStore.randomGifs" justify="center">
+    <VRow justify="center">
       <VCol col="12" md="6">
-        <VSlideGroup>
+        <VSlideGroup v-if="gifStore.randomGifsLoading">
+          <VSlideGroupItem v-for="index in 2" :key="index">
+            <v-skeleton-loader class="ma-4" height="100px" type="image" width="200px" />
+          </VSlideGroupItem>
+        </VSlideGroup>
+        <VSlideGroup v-else-if="gifStore.randomGifs">
           <VSlideGroupItem v-for="gif in gifStore.randomGifs" :key="gif.id">
             <GiphyGif
               class="ma-4 cursor-pointer"
@@ -40,6 +46,7 @@
             />
           </VSlideGroupItem>
         </VSlideGroup>
+
       </VCol>
     </VRow>
 
