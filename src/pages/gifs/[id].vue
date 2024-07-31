@@ -12,7 +12,7 @@
             />
             <div>
               <h1>{{ gifStore.gif.title }}</h1>
-              <h3>Author: <a href="#" @click="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
+              <h3>Author: <a href="#" @click.prevent="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
             </div>
           </div>
 
