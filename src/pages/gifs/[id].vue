@@ -48,7 +48,6 @@
 </template>
 
 <script lang="ts" setup>
-  import Header from '@/layouts/header.vue'
   import { useGifStore } from '@/stores/gif.store'
   const router = useRouter()
   const route = useRoute('/gifs/[id]')
