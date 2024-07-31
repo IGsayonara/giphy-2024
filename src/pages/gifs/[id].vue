@@ -3,23 +3,19 @@
     <VRow v-if="gifStore.gif" justify="center">
       <VCol col="12" md="6">
         <VRow class="text-center" justify="center">
-          <VCard
-            :height="originalGif?.height"
-            :width="originalGif?.width"
-          >
-            <template #image>
-              <GiphyGif
-                :full="true"
-                :gif="gifStore.gif"
-                height="auto"
-                width="100%"
-              />
-            </template>
-          </VCard>
           <div>
-            <h1>{{ gifStore.gif.title }}</h1>
-            <h3>Author: <a href="#" @click="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
+            <GiphyGif
+              :full="true"
+              :gif="gifStore.gif"
+              height="auto"
+              width="100%"
+            />
+            <div>
+              <h1>{{ gifStore.gif.title }}</h1>
+              <h3>Author: <a href="#" @click="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
+            </div>
           </div>
+
         </VRow>
       </VCol>
     </VRow>

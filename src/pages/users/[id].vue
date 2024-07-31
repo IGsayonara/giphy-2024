@@ -1,41 +1,41 @@
 <template>
   <VContainer>
-    <template v-if="gifStore.gif">
-      <VCard
-        :height="originalGif?.height"
-        :width="originalGif?.width"
-      >
-        <template #image>
-          <GiphyGif
-            :full="true"
-            :gif="gifStore.gif"
-            height="auto"
-            width="auto"
-          />
-        </template>
-      </VCard>
-      <h3>Author: <a href="#" @click="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
-      <h1>{{ gifStore.gif.title }}</h1>
-
-    </template>
-    <NotFound v-else-if="gifStore.notFound" />
+    <VRow v-if="userStore.user" justify="center">
+      <VCol col="12" md="6">
+        <VRow class="text-center" justify="center">
+          <div>
+            <GiphyLogo class="cursor-pointer" @click="$router.push(`/gifs/${userStore.gifId}`)" />
+            <div class="flex-column mt-4">
+              <div class="d-flex">
+                <a :href="userStore.user.profile_url"><VImg height="50" :src="userStore.user.avatar_url" width="50" /></a>
+                <h1 class="ml-2">{{ userStore.user.username }}</h1>
+              </div>
+              <p class="mt-4">Visit
+                <a :href="userStore.user.profile_url">{{ userStore.user.username }}</a>
+                on <a href="https://giphy.com">GIPHY</a>
+              </p>
+            </div>
+          </div>
+        </VRow>
+      </VCol>
+    </VRow>
+    <VRow v-else class="text-center" justify="center">
+      <div>
+        <h2>User can be reached only from a gif page</h2>
+        <a href="#" @click="$router.push('/')">Go home</a>
+      </div>
+    </VRow>
   </VContainer>
 </template>
 
 <script lang="ts" setup>
-  import { useGifStore } from '@/stores/gif.store'
-  const router = useRouter()
-  // const route = useRoute()
+  import { useUserStore } from '@/stores/user.store'
 
-  const gifStore = useGifStore()
+  const userStore = useUserStore()
 
-  const originalGif = computed(() => {
-    return gifStore.gif?.images.original
-  })
-
-  const onUserLinkClick = (username: string) => {
-    router.push(`/users/${username}`)
+  const initializeStore = () => {
+    userStore.fetchUser()
   }
+  initializeStore()
 
-  // gifStore.fetchGif(route.params.id)
 </script>
