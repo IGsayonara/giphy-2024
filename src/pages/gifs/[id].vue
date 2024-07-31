@@ -30,7 +30,7 @@
     <VRow justify="center">
       <VCol col="12" md="6">
         <VSlideGroup v-if="gifStore.randomGifsLoading">
-          <VSlideGroupItem v-for="index in 2" :key="index">
+          <VSlideGroupItem v-for="index in 4" :key="index">
             <v-skeleton-loader class="ma-4" height="100px" type="image" width="200px" />
           </VSlideGroupItem>
         </VSlideGroup>
