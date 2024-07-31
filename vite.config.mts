@@ -15,6 +15,18 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/giphy-2024/',
+  build: {
+    rollupOptions: {
+      output: {
+        // Customize the filename for entry chunks
+        entryFileNames: 'assets/[hash]_[name].js',
+        // Customize the filename for dynamic import chunks
+        chunkFileNames: 'assets/[hash]_[name].js',
+        // Customize the filename for CSS assets
+        assetFileNames: 'assets/[hash]_[name].[ext]'
+      }
+    }
+  },
   plugins: [
     VueRouter({
       dts: 'src/typed-router.d.ts',
