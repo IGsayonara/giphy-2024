@@ -16,6 +16,7 @@ export const fetchRandom = async (tag = ''): Promise<SingleResponse> => {
     params: {
       ...(tag && { tag }),
       _: new Date().getTime(), // prevent caching
+      rand: Math.random(),
     },
   }).then(r => r.data)
 }
