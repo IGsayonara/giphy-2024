@@ -50,17 +50,12 @@
 <script lang="ts" setup>
   import { useGifStore } from '@/stores/gif.store'
   const router = useRouter()
-  const route = useRoute()
+  const route = useRoute('/gifs/[id]')
 
   const gifStore = useGifStore()
 
-  const originalGif = computed(() => {
-    return gifStore.gif?.images.original
-  })
-
   const initializeStore = () => {
-    // TODO: find a proper type definition for a route params
-    const id = (route.params as any).id
+    const id = route.params.id
     if (id) {
       gifStore.fetchGif(id)
     }
