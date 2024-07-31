@@ -24,10 +24,16 @@
       </VCol>
     </VRow>
 
+    <VRow v-if="gifStore.notFound" justify="center">
+      <VCol cols="12" md="6">
+        <NotFound />
+      </VCol>
+    </VRow>
+
     <VRow v-if="gifStore.randomGifs" justify="center">
       <VCol col="12" md="6">
         <VSlideGroup>
-          <VSlideGroupItem v-for="gif in gifStore.randomGifs">
+          <VSlideGroupItem v-for="gif in gifStore.randomGifs" :key="gif.id">
             <GiphyGif
               class="ma-4 cursor-pointer"
               :full="false"
@@ -38,12 +44,6 @@
             />
           </VSlideGroupItem>
         </VSlideGroup>
-      </VCol>
-    </VRow>
-
-    <VRow v-else-if="gifStore.notFound" justify="center">
-      <VCol cols="12" md="6">
-        <NotFound />
       </VCol>
     </VRow>
 

@@ -14,6 +14,10 @@ export const useGifStore = defineStore('gif', {
   actions: {
     async fetchGif (id: string) {
       this.gif = await fetchById(id).then(r => r.data)
+        .then(data => {
+          this.notFound = false
+          return data
+        })
         .catch(() => {
           this.notFound = true
           return null
