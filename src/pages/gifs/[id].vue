@@ -92,5 +92,5 @@
 
 <route lang="yaml">
 meta:
-layout: header
+  layout: header
 </route>
