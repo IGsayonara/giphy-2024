@@ -15,6 +15,7 @@ export const fetchRandom = async (tag = ''): Promise<SingleResponse> => {
   return giphyAxios.get<SingleResponse>('/gifs/random/', {
     params: {
       ...(tag && { tag }),
+      _: new Date().getTime(), // prevent caching
     },
   }).then(r => r.data)
 }
