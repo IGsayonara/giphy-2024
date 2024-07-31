@@ -13,7 +13,13 @@
             />
             <div>
               <h1>{{ gifStore.gif.title }}</h1>
-              <h3>Author: <a href="#" @click.prevent="onUserLinkClick(gifStore.gif.username)">{{ gifStore.gif.username }}</a></h3>
+              <h3>Author:
+                <a
+                  v-if="gifStore.gif.username"
+                  href="#"
+                  @click.prevent="onUserLinkClick(gifStore.gif.username)"
+                >{{ gifStore.gif.username }}</a>
+                <span v-else>Unknown</span></h3>
             </div>
           </div>
 
@@ -56,6 +62,7 @@
 
 <script lang="ts" setup>
   import { useGifStore } from '@/stores/gif.store'
+
   const router = useRouter()
   const route = useRoute('/gifs/[id]')
 
@@ -85,5 +92,5 @@
 
 <route lang="yaml">
 meta:
-  layout: header
+layout: header
 </route>
